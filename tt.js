@@ -45,7 +45,12 @@ const triplets = [
 
 var recoverSecret = function (triplets) {
   for (var [first] of triplets) {
-    console.log(triplets.every((tuple) => tuple.indexOf(first) <= 0));
+    console.log(
+      triplets.every((tuple) => {
+        console.log(tuple, first);
+        return tuple.indexOf(first) <= 0;
+      })
+    );
     if (triplets.every((tuple) => tuple.indexOf(first) <= 0)) {
       // triplets
       //   .filter(([item]) => item == first)
