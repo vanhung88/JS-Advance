@@ -35,32 +35,25 @@ function recoverPassword(triplets) {
 // Example usage:
 const triplets = [
   ['t', 'u', 'p'],
-  ['w', 'h', 'i'],
+  ['w', 'h', 'i'], // true
   ['t', 's', 'u'],
   ['a', 't', 's'],
   ['h', 'a', 'p'],
   ['t', 'i', 's'],
-  ['w', 'h', 's'],
+  ['w', 'h', 's'], // true
 ];
-
-var recoverSecret = function (triplets) {
+var recover_password = function (triplets) {
   for (var [first] of triplets) {
-    console.log(
-      triplets.every((tuple) => {
-        console.log(tuple, first);
-        return tuple.indexOf(first) <= 0;
-      })
-    );
     if (triplets.every((tuple) => tuple.indexOf(first) <= 0)) {
-      // triplets
-      //   .filter(([item]) => item == first)
-      //   .forEach((tuple) => tuple.shift());
-      // const a =
-      //   first + recoverSecret(triplets.filter((tuple) => tuple.length > 0));
-      // return a;
+      triplets
+        .filter(([item]) => item == first)
+        .forEach((tuple) => tuple.shift());
+      return (
+        first + recover_password(triplets.filter((tuple) => tuple.length > 0))
+      );
     }
   }
   return '';
 };
 
-console.log(recoverSecret(triplets));
+console.log(recover_password(triplets));

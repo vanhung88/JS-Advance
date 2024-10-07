@@ -54,6 +54,8 @@ const getListData = async () => {
   return '123';
 };
 
-getListData().then((data) => {
+(async () => {
+  const data = await getListData();
   console.log(data);
-});
+  console.log('lasdlasd');
+})();
